@@ -7,19 +7,27 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('store', '0005_product_category'),
-        ('payment', '0005_alter_orderitem_order_alter_orderitem_product'),
+        ("store", "0005_product_category"),
+        ("payment", "0005_alter_orderitem_order_alter_orderitem_product"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='orderitem',
-            name='order',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='payment.order'),
+            model_name="orderitem",
+            name="order",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="payment.order",
+            ),
         ),
         migrations.AlterField(
-            model_name='orderitem',
-            name='product',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='store.product'),
+            model_name="orderitem",
+            name="product",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="store.product",
+            ),
         ),
     ]

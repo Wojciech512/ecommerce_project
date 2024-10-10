@@ -9,22 +9,38 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('payment', '0001_initial'),
+        ("payment", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Order',
+            name="Order",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('full_name', models.CharField(max_length=300)),
-                ('email', models.EmailField(max_length=255)),
-                ('shipping_address', models.TextField(max_length=10000)),
-                ('products_ordered', models.TextField(max_length=10000)),
-                ('total_quantity', models.CharField(max_length=100)),
-                ('total_cost', models.DecimalField(decimal_places=2, max_digits=8)),
-                ('date_ordered', models.DateTimeField(auto_now_add=True)),
-                ('user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("full_name", models.CharField(max_length=300)),
+                ("email", models.EmailField(max_length=255)),
+                ("shipping_address", models.TextField(max_length=10000)),
+                ("products_ordered", models.TextField(max_length=10000)),
+                ("total_quantity", models.CharField(max_length=100)),
+                ("total_cost", models.DecimalField(decimal_places=2, max_digits=8)),
+                ("date_ordered", models.DateTimeField(auto_now_add=True)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]
