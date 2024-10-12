@@ -163,7 +163,7 @@ EMAIL_USE_TLS = "True"
 # Be sure to read the guide in the resources folder of this lecture (SETUP THE EMAIL BACKEND)
 
 EMAIL_HOST_USER = "netflixww2000@gmail.com"  # - Enter your GMAIL address # The host email that sends password reset emails
-EMAIL_HOST_PASSWORD = "vqbp aprb skwl lhwj"  # - Enter your app password
+EMAIL_HOST_PASSWORD = ""  # - Enter your app password
 
 
 # AWS credentials:

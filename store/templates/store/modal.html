@@ -5,8 +5,11 @@
       {% csrf_token %}
       <input type="hidden" name="operation_type" id="operationType">
       <input type="hidden" name="user_id" id="userId">
-      <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
-      <button type="submit" class="btn btn-danger" id="confirmButton">Submit</button>
+
+      <div class="modal-buttons">
+        <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+        <button type="submit" class="btn btn-danger" id="confirmButton">Submit</button>
+      </div>
     </form>
   </div>
 </div>

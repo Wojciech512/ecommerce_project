@@ -265,11 +265,11 @@ def delete_user(request, user_id):
     user = User.objects.get(id=user_id)
 
     if user == request.user:
-        messages.error(request, "Nie możesz usunąć swojego konta!")
+        messages.error(request, "You can't delete your account!")
         return redirect("admin-dashboard")
 
     user.delete()
-    messages.success(request, f"Użytkownik {user.username} został usunięty.")
+    messages.info(request, f"User {user.username} has been deleted.")
     return redirect("admin-dashboard")
 
 
@@ -277,27 +277,23 @@ def delete_user(request, user_id):
 def change_user_permissions(request, user_id):
     if request.method == "POST":
         operation_type = request.POST.get('operation_type')
-        # Pobieramy użytkownika
         user = User.objects.get(id=user_id)
 
         if operation_type == "change_permissions":
             if user.is_superuser:
-                # Sprawdzenie, czy użytkownik nie jest ostatnim superużytkownikiem
                 if User.objects.filter(is_superuser=True).count() <= 1:
-                    messages.error(request, "Nie można usunąć ostatniego superużytkownika!")
+                    messages.error(request, "The last super user cannot be deleted!")
                     return redirect("admin-dashboard")
 
-                # Odebranie uprawnień superużytkownika
                 user.is_superuser = False
                 user.is_staff = False
                 user.save()
-                messages.success(request, f"Użytkownik {user.username} stracił uprawnienia administratora.")
+                messages.info(request, f"The user {user.username} has lost administrator privileges.")
             else:
-                # Nadanie uprawnień superużytkownika
                 user.is_superuser = True
                 user.is_staff = True
                 user.save()
-                messages.success(request, f"Użytkownik {user.username} został administratorem.")
+                messages.info(request, f"The user {user.username} has become an administrator.")
 
         return redirect("admin-dashboard")
 

@@ -21,7 +21,7 @@ function closeModal() {
 }
 
 function confirmDelete(username, userId) {
-  document.getElementById('modalMessage').innerText = 'Czy na pewno chcesz usunąć użytkownika ' + username + '?';
+  document.getElementById('modalMessage').innerHTML = 'Are you sure you want to <strong>delete user ' + username + '</strong>?';
   document.getElementById('operationForm').action = '/account/admin/delete-user/' + userId + '/';
   document.getElementById('operationType').value = 'delete';
   document.getElementById('userId').value = userId;
@@ -30,13 +30,14 @@ function confirmDelete(username, userId) {
 
 function confirmChangePermissions(button) {
   const userId = button.getAttribute("data-userid");
-  document.getElementById('modalMessage').innerText = button.getAttribute("data-message");
+  document.getElementById('modalMessage').innerHTML = button.getAttribute("data-message");
   document.getElementById('operationForm').action = '/account/admin/change-user-permissions/'+ userId +'/';
   document.getElementById('operationType').value = 'change_permissions';
   document.getElementById('userId').value = userId;
 
   showModal();
 }
+
 
 document.addEventListener('DOMContentLoaded', function () {
   const deleteButtons = document.querySelectorAll('.delete-button');

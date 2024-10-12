@@ -1,6 +1,7 @@
 {% include "store/base.html" %} {% include "store/modal.html" %} {% load static %} {% load crispy_forms_tags %}
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/admin_dashboard.css' %}" />
+<link rel="stylesheet" href="{% static 'css/modal.css' %}" />
+<link rel="stylesheet" href="{% static 'css/layout.css' %}" />
 
 <body>
   <br />
@@ -10,15 +11,14 @@
     </h4>
     <hr />
     <p>
-      Witaj, {{ user.username }}! Z tego panelu możesz zarządzać użytkownikami i
-      uprawnieniami.
+      Hello, {{ user.username }}! From this panel you can manage users and
+      permissions.
     </p>
   </div>
 
   <div class="container bg-white shadow-md p-5 form-layout w-100">
     <h4>
-      <i class="fa fa-users" aria-hidden="true"></i> &nbsp; Zarządzanie
-      użytkownikami
+      <i class="fa fa-users" aria-hidden="true"></i> &nbsp; Management users
     </h4>
     <hr />
     <table class="table table-striped">
@@ -53,7 +53,7 @@
                   data-username="{{ u.username }}"
                   data-userid="{{ u.id }}"
                   data-operation="change_permissions"
-                  data-message="Czy na pewno chcesz odebrać uprawnienia administratora użytkownikowi {{ u.username }}?"
+                  data-message="Are you sure you want to <strong>revoke the administrator privileges</strong> of the user {{ u.username }}?"
                   {% if user.username == u.username %} disabled {% endif %}
                   onclick="openModal(this)"
                 >
@@ -65,7 +65,7 @@
                   data-username="{{ u.username }}"
                   data-userid="{{ u.id }}"
                   data-operation="change_permissions"
-                  data-message="Czy na pewno chcesz nadać uprawnienia administratora użytkownikowi {{ u.username }}?"
+                  data-message="Are you sure you want to <strong>grant administrator privileges</strong> to the user {{ u.username }}?"
                   {% if user.username == u.username %} disabled {% endif %}
                   onclick="openModal(this)"
                 >
